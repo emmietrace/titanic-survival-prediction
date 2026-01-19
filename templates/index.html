@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="glass-container">
+        <div class="card-left">
+            <div class="brand">
+                <i class="fas fa-anchor"></i>
+                <h2>RMS TITANIC</h2>
+            </div>
+            <div class="info-text">
+                <h1>Will You Survive?</h1>
+                <p>Enter your passenger details to calculate your survival probability using our Random Forest AI model.</p>
+            </div>
+            <div class="footer-note">
+                <small>White Star Line &copy; 1912</small>
+            </div>
+        </div>
+
+        <div class="card-right">
+            <div class="scroll-wrapper">
+                <form action="/" method="post">
+                    <h3>Passenger Manifest</h3>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label><i class="fas fa-ticket-alt"></i> Ticket Class</label>
+                            <select name="Pclass" required>
+                                <option value="1">1st Class (Upper)</option>
+                                <option value="2">2nd Class (Middle)</option>
+                                <option value="3" selected>3rd Class (Lower)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fas fa-venus-mars"></i> Gender</label>
+                            <select name="Sex" required>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fas fa-hourglass-half"></i> Age</label>
+                            <input type="number" name="Age" min="1" max="100" placeholder="29" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fas fa-coins"></i> Fare ($)</label>
+                            <input type="number" name="Fare" min="0" step="0.01" placeholder="30.50" required>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label><i class="fas fa-users"></i> Siblings/Spouses Aboard</label>
+                            <input type="number" name="SibSp" min="0" max="10" value="0" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Analyze Chances</button>
+                </form>
+
+                {% if prediction_text %}
+                <div class="result-box {{ result_class }}">
+                    <h4><i class="fas {{ icon }}"></i> Result</h4>
+                    <p>{{ prediction_text }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
