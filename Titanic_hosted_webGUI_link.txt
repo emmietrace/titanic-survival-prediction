@@ -1,5 +1,3 @@
-Name: Emmanuel Okolo
-Matric Number: 23CG034116
 Machine Learning Algorithm Used: Random Forest Classifier
 Model persistence method used: Joblib
 Live URL of the hosted application: https://okolo-titanic-survival-predict-app.onrender.com/
